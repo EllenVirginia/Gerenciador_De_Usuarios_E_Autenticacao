@@ -1,6 +1,6 @@
 package com.example.demo; //Define o pacote onde está localizada a classe User.
 
-public record User(String username, String password) {
+public record User(String username, String email, String password) {
 
 }
 
