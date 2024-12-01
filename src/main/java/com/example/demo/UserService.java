@@ -28,6 +28,13 @@ public class UserService {
         if (!user.password().matches("^(?=.*\\d).{8,}$")) {
             throw new UserException("Senha deve ter pelo menos 8 caracteres e incluir pelo menos um número.");
         }
+        
+        if (user.username() == null || user.username().isBlank()) {
+            throw new UserException("O nome de usuário não pode estar vazio.");
+        }
+        if (user.email() == null || user.email().isBlank()) {
+            throw new UserException("O email não pode estar vazio.");
+        }
     }
 
     // Login com validação de credenciais

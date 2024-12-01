@@ -84,4 +84,28 @@ public class UserServiceTest{
 
         assertEquals("Email ou senha inválidos.", exception.getMessage());
     }
+
+     // Teste 7: Cadastro com nome de usuário vazio
+     @Test
+     public void testCreateUserWithEmptyUsername() {
+         User user = new User("", "vazio@example.com", "senha123");
+ 
+         Exception exception = assertThrows(UserException.class, () -> {
+             userService.create(user);
+         });
+ 
+         assertEquals("O nome de usuário não pode estar vazio.", exception.getMessage());
+     }
+ 
+     // Teste 8: Cadastro com email vazio
+     @Test
+     public void testCreateUserWithEmptyEmail() {
+         User user = new User("Teste", "", "senha123");
+ 
+         Exception exception = assertThrows(UserException.class, () -> {
+             userService.create(user);
+         });
+ 
+         assertEquals("O email não pode estar vazio.", exception.getMessage());
+     }
 }
